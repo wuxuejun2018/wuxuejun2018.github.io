@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wuxuejun2018.github.io/"/>
-  <updated>2018-03-04T11:46:46.513Z</updated>
+  <updated>2018-03-04T05:00:01.565Z</updated>
   <id>https://wuxuejun2018.github.io/</id>
   
   <author>
@@ -15,52 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>杭城晓梦</title>
-    <link href="https://wuxuejun2018.github.io/2018/03/04/My-Gallery/"/>
-    <id>https://wuxuejun2018.github.io/2018/03/04/My-Gallery/</id>
-    <published>2018-03-04T05:44:42.000Z</published>
-    <updated>2018-03-04T11:46:46.513Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="http://img.hb.aicdn.com/7d3b88feb93e469a9995b3cd7445884950fd1e466ff08-hTSx1H_fw658 "></p><center> <p>晓梦乍醒声声脆，<br>杭城烟雨飘满天；<br>风风火火迎兔岁，<br>卯酒盈杯祝丰年。</p><p></p></center><p></p><a id="more"></a><center></center>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://img.hb.aicdn.com/7d3b88feb93e469a9995b3cd7445884950fd1e466ff08-hTSx1H_fw658 &quot;&gt;&lt;/p&gt;
-&lt;center&gt; 
-
-&lt;p&gt;晓梦乍醒声声脆，&lt;br&gt;杭城烟雨飘满天；&lt;br&gt;风风火火迎兔岁，&lt;br&gt;卯酒盈杯祝丰年。&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;&lt;/center&gt;&lt;p&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一首优美的诗</title>
-    <link href="https://wuxuejun2018.github.io/2018/03/04/about/"/>
-    <id>https://wuxuejun2018.github.io/2018/03/04/about/</id>
-    <published>2018-03-04T03:12:11.000Z</published>
-    <updated>2018-03-04T11:16:31.221Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。</p><a id="more"></a> <p>请不要说青春已疲惫，也许你的幻想曾被现实无情的毁灭，也许你的追求毫无结果，但你应该相信，没有寒风的洗礼，哪来万紫千红的春天？没有辛勤的耕耘，哪有累累硕果？青春是一首不悔的诗。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://wuxuejun2018.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="hexo" scheme="https://wuxuejun2018.github.io/tags/hexo/"/>
-    
-      <category term="test" scheme="https://wuxuejun2018.github.io/tags/test/"/>
-    
-  </entry>
   
   <entry>
     <title>第一篇文章</title>
@@ -75,42 +29,6 @@
     
       &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第一个项目测试</title>
-    <link href="https://wuxuejun2018.github.io/2018/03/03/%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95/"/>
-    <id>https://wuxuejun2018.github.io/2018/03/03/第一个项目测试/</id>
-    <published>2018-03-03T13:24:29.000Z</published>
-    <updated>2018-03-04T05:00:11.783Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。</p><a id="more"></a> <p>请不要说青春已疲惫，也许你的幻想曾被现实无情的毁灭，也许你的追求毫无结果，但你应该相信，没有寒风的洗礼，哪来万紫千红的春天？没有辛勤的耕耘，哪有累累硕果？青春是一首不悔的诗。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>我的中文博客</title>
-    <link href="https://wuxuejun2018.github.io/2018/03/03/%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://wuxuejun2018.github.io/2018/03/03/我的中文博客/</id>
-    <published>2018-03-03T08:39:12.000Z</published>
-    <updated>2018-03-04T05:00:20.505Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。</p><a id="more"></a> <p>请不要说青春已疲惫，也许你的幻想曾被现实无情的毁灭，也许你的追求毫无结果，但你应该相信，没有寒风的洗礼，哪来万紫千红的春天？没有辛勤的耕耘，哪有累累硕果？青春是一首不悔的诗。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有一首诗最为动人，那就是青春；有一段人生最美丽，那就是青春；有一道风景最为亮丽，那就是青春。&lt;/p&gt;
     
     </summary>
     
