@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wuxuejun2018.github.io/"/>
-  <updated>2018-04-18T13:27:13.066Z</updated>
+  <updated>2018-04-18T14:55:34.969Z</updated>
   <id>https://wuxuejun2018.github.io/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>123</title>
+    <title>HTTP/2 Server Push  功能介绍</title>
     <link href="https://wuxuejun2018.github.io/2018/04/18/HTTP-2-Server-push-%E4%BB%8B%E7%BB%8D/"/>
     <id>https://wuxuejun2018.github.io/2018/04/18/HTTP-2-Server-push-介绍/</id>
     <published>2018-04-18T13:23:00.000Z</published>
-    <updated>2018-04-18T13:27:13.066Z</updated>
+    <updated>2018-04-18T14:55:34.969Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p> <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="HTTP-2-文档中心文案"><a href="#HTTP-2-文档中心文案" class="headerlink" title="HTTP/2 文档中心文案"></a>HTTP/2 文档中心文案</h2><p><strong>功能说明</strong></p><p>HTTP/2 即超文本传输协议 2.0，是下一代 HTTP 协议，在 CDN 控制台您可以灵活进行 HTTP/2 特性的开启和关闭。</p><p>又拍云 CDN 服务当前已全平台支持 HTTP/2。HTTP/2 是在 HTTPS 协议的基础上实现的，只要使用又拍云 HTTPS 加速服务的域名，都可免费享受 HTTP/2 服务。又拍云控制台关于 HTTP/2 的配置支持三种模式的设置，分别是：</p><p>1)开启 HTTP/2 </p><p>默认开启 HTTP/2 特性，包括采用二进制格式传输数据、对消息头采用 HPACK 进行压缩传输、多路复用 等特性，但不包括 Server Push 特性。</p><p>2)关闭 HTTP/2 </p><p>如需关闭 HTTP/2 特性，可以选择关闭，请根据要求合理关闭。</p><p>3)开启 HTTP/2 + Server Push </p><p>该模式下，支持 HTTP/2 的所有特性，其中 Server Push 特性需要根据业务需求合理配置。</p><p>特别强调的是，Server Push 是 HTTP/2 规范中引入的一种新技术，也即服务端在没有被客户端明确的询问下，抢先的 “推送” 一些网站资源给客户端。该特性只要被正确的使用，可以达到很好的页面访问效果。</p><p><strong>配置引导</strong></p><p>登陆 <a href="https://console.upyun.com/login/" target="_blank" rel="noopener">CDN 控制台</a>，依次进入：服务管理 &gt; 功能配置 &gt; HTTPS &gt; HTTP/2 配置，点击【管理】按钮即可开始配置。如下图所示：</p><p>1）开启 HTTP/2 </p><p>默认已经开启，如截图所示：</p><p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-open-http2.png" height="400" width="800"></p><p>注意：当且仅当开启 HTTPS 加速时，HTTP/2 特性才会生效。</p><p>2）关闭 HTTP/2 </p><p>如需关闭 HTTP/2 特性，可以在控制台关闭，点击【关闭 HTTP/2】按钮，然后点击【确定】即可保存配置。如截图所示：</p><p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-close-http2.png" height="400" width="800"></p><p>3）开启 HTTP/2 + Server Push </p><p>如下截图所示，点击【 开启 HTTP/2 + Server Push 】按钮，配置匹配路径以及推送资源，然后点击【确定】即可保存配置。</p><p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-http2-server-push.png" height="400" width="800"></p><p>其中，在配置项里面，【匹配路径】是必填项，【推送资源】是非必填项。</p><p>匹配路径：也即 Server Push 特性仅针对匹配的 URI  生效，示例为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/index.html</span><br><span class="line">/admin.html</span><br></pre></td></tr></table></figure><p>推送资源：表示匹配 URI 后将要推送的资源的 PATH（不包括 HOST 部分），示例为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/style/index.css</span><br><span class="line">/dyn/index.js</span><br></pre></td></tr></table></figure><p>需要注意的是当源站有设置 <a href="https://www.w3.org/TR/2017/CR-preload-20171026/#server-push-http-2" target="_blank" rel="noopener">Link 首部</a>时，即使【推送资源】在 CDN 端没有进行自定义设置，也会生效，其中 Link 首部的示例为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/css/styles.css&gt;; rel=preload; as=style</span><br></pre></td></tr></table></figure><p><strong>注意事项</strong></p><ul><li>HTTP/2 特性是在 HTTPS 协议的基础上实现，需要加速域名支持 HTTPS 访问方可支持该特性；</li><li>使用 Server Push 特性，通常会在源站设置 Link 首部，例如：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/css/styles.css&gt;; rel=preload; as=style</span><br></pre></td></tr></table></figure><p>如果在 CDN 端进行自定义 Server Push 配置，优先级会高于源站设置的 Link 首部。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt; &lt;a href=&quot;http://localhost:4000/&quot; targ
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h2 id=&quot;HTTP-2-文档中心文案&quot;&gt;&lt;a href=&quot;#HTTP-2-文
       
     
     </summary>
@@ -38,11 +38,11 @@
   </entry>
   
   <entry>
-    <title>第一篇文章</title>
+    <title>测试</title>
     <link href="https://wuxuejun2018.github.io/2018/03/03/hello-world/"/>
     <id>https://wuxuejun2018.github.io/2018/03/03/hello-world/</id>
     <published>2018-03-03T15:25:30.000Z</published>
-    <updated>2018-03-04T05:00:01.565Z</updated>
+    <updated>2018-04-18T14:44:00.765Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
