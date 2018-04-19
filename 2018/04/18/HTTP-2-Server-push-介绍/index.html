@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://upyun-assets.b0.upaiyun.com/docs/blog/https_server_push_test.png">
 <meta property="og:image" content="http://upyun-assets.b0.upaiyun.com/docs/blog/https_server-push_upyun_club_index_html.png
 ">
-<meta property="og:updated_time" content="2018-04-19T14:02:26.729Z">
+<meta property="og:updated_time" content="2018-04-19T14:05:09.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="又拍云 CDN 服务支持 HTTP&#x2F;2 Server Push 特性">
 <meta name="twitter:description" content="前言很长一段时间内，NGINX 并不支持 HTTP/2 的 Server Push 特性。好消息是最新版本的 NGINX 1.13.9 已支持该特性，详情请移步 NGINX 官方博客。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。 又拍云在 NGINX 基础上，已经在其 CDN 网络中全网支持 HTTP/2 的 Ser">
@@ -372,7 +372,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-19T22:02:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-19T22:05:09+08:00">
                 2018-04-19
               </time>
             
@@ -448,13 +448,11 @@
 <p>图片来源：<code>www.smashingmagazine.com</code></p>
 <p>使用服务器推送（Server Push）技术之后，当 WEB 浏览器请求 <code>index.html</code> 之后，WEB 服务端会直接将需要推送的资源一并发给 WEB 浏览器，而不需要 WEB 浏览器进行依次请求，这减少了 WEB 浏览器进行 GET 请求所消耗的时间。</p>
 <h3 id="如何使用-Server-Push"><a href="#如何使用-Server-Push" class="headerlink" title="如何使用 Server Push"></a>如何使用 <code>Server Push</code></h3><p>又拍云 CDN 支持 <code>Server Push</code> 特性可以通过如下两种方式来实现：</p>
-<p>####方式一：</p>
-<p>利用 HTTP 的 <code>Link</code> 首部，这在 W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener">Preload</a> 工作草案中有详细描述。示例为：</p>
+<h4 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h4><p>利用 HTTP 的 <code>Link</code> 首部，这在 W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener">Preload</a> 工作草案中有详细描述。示例为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/static/css/style.css&gt;; rel=preload; as=style;</span><br></pre></td></tr></table></figure>
 <p>其中，<code>Link</code> 首部中 <code>as</code> 是必选的，它告诉了浏览器推送的资源类型，例如 <code>as=style</code> 表明了推送的资源是一个样式表，除了样式表，您还可以推送其他的内容类型，详情参见<a href="https://w3c.github.io/preload/#link-element-interface-extensions" target="_blank" rel="noopener">支持的内容类型</a>。如果需要进行多资源推送，可以进行如下设置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/static/css/styles.css&gt;; rel=preload; as=style, &lt;/js/scripts.js&gt;; rel=preload; as=script, &lt;/img/logo.png&gt;; rel=preload; as=image</span><br></pre></td></tr></table></figure>
-<p>####方式二：</p>
-<p>在 CDN 控制台进行自定义 <code>Server Push 配置</code>，此时您无需在源站进行修改，例如：</p>
+<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><p>在 CDN 控制台进行自定义 <code>Server Push</code> 配置，此时您无需在源站进行修改，例如：</p>
 <p>匹配路径为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.html</span><br></pre></td></tr></table></figure>
 <p>推送资源为：</p>
@@ -730,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何为-Server-Push"><span class="nav-number">2.</span> <span class="nav-text">何为 Server Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用-Server-Push"><span class="nav-number">3.</span> <span class="nav-text">如何使用 Server Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何验证-Server-Push-是否生效"><span class="nav-number">4.</span> <span class="nav-text">如何验证 Server Push 是否生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后语"><span class="nav-number">5.</span> <span class="nav-text">后语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何为-Server-Push"><span class="nav-number">2.</span> <span class="nav-text">何为 Server Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用-Server-Push"><span class="nav-number">3.</span> <span class="nav-text">如何使用 Server Push</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一："><span class="nav-number">3.1.</span> <span class="nav-text">方式一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二："><span class="nav-number">3.2.</span> <span class="nav-text">方式二：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何验证-Server-Push-是否生效"><span class="nav-number">4.</span> <span class="nav-text">如何验证 Server Push 是否生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后语"><span class="nav-number">5.</span> <span class="nav-text">后语</span></a></li></ol></div>
             
 
           </div>
