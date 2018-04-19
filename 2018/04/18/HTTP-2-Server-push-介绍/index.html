@@ -101,21 +101,24 @@
 
 
 
-<meta name="description" content="HTTP/2 文档中心文案功能说明 HTTP/2 即超文本传输协议 2.0，是下一代 HTTP 协议，在 CDN 控制台您可以灵活进行 HTTP/2 特性的开启和关闭。 又拍云 CDN 服务当前已全平台支持 HTTP/2。HTTP/2 是在 HTTPS 协议的基础上实现的，只要使用又拍云 HTTPS 加速服务的域名，都可免费享受 HTTP/2 服务。又拍云控制台关于 HTTP/2 的配置支持三种模">
+<meta name="description" content="前言很长一段时间内，NGINX 并不支持 HTTP/2 的 Server Push 特性。好消息是最新版本的 NGINX 1.13.9 已支持该特性，详情请移步 NGINX 官方博客。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。 又拍云在 NGINX 基础上，已经在其 CDN 网络中全网支持 HTTP/2 的 Ser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP&#x2F;2 Server Push  功能介绍">
+<meta property="og:title" content="又拍云 CDN 服务支持 HTTP&#x2F;2 Server Push 特性">
 <meta property="og:url" content="https://wuxuejun2018.github.io/2018/04/18/HTTP-2-Server-push-介绍/index.html">
 <meta property="og:site_name" content="JackWu&#39;s Blog">
-<meta property="og:description" content="HTTP/2 文档中心文案功能说明 HTTP/2 即超文本传输协议 2.0，是下一代 HTTP 协议，在 CDN 控制台您可以灵活进行 HTTP/2 特性的开启和关闭。 又拍云 CDN 服务当前已全平台支持 HTTP/2。HTTP/2 是在 HTTPS 协议的基础上实现的，只要使用又拍云 HTTPS 加速服务的域名，都可免费享受 HTTP/2 服务。又拍云控制台关于 HTTP/2 的配置支持三种模">
+<meta property="og:description" content="前言很长一段时间内，NGINX 并不支持 HTTP/2 的 Server Push 特性。好消息是最新版本的 NGINX 1.13.9 已支持该特性，详情请移步 NGINX 官方博客。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。 又拍云在 NGINX 基础上，已经在其 CDN 网络中全网支持 HTTP/2 的 Ser">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-open-http2.png">
-<meta property="og:image" content="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-close-http2.png">
+<meta property="og:image" content="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cbf9347f-24a2-4634-8a14-36ff95725dd6/normal-server-response.png">
+<meta property="og:image" content="http://provide.smashingmagazine.com/server-push-response.svg">
 <meta property="og:image" content="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-http2-server-push.png">
-<meta property="og:updated_time" content="2018-04-18T15:57:25.953Z">
+<meta property="og:image" content="https://upyun-assets.b0.upaiyun.com/docs/blog/https_server_push_test.png">
+<meta property="og:image" content="http://upyun-assets.b0.upaiyun.com/docs/blog/https_server-push_upyun_club_index_html.png
+">
+<meta property="og:updated_time" content="2018-04-19T14:02:26.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP&#x2F;2 Server Push  功能介绍">
-<meta name="twitter:description" content="HTTP/2 文档中心文案功能说明 HTTP/2 即超文本传输协议 2.0，是下一代 HTTP 协议，在 CDN 控制台您可以灵活进行 HTTP/2 特性的开启和关闭。 又拍云 CDN 服务当前已全平台支持 HTTP/2。HTTP/2 是在 HTTPS 协议的基础上实现的，只要使用又拍云 HTTPS 加速服务的域名，都可免费享受 HTTP/2 服务。又拍云控制台关于 HTTP/2 的配置支持三种模">
-<meta name="twitter:image" content="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-open-http2.png">
+<meta name="twitter:title" content="又拍云 CDN 服务支持 HTTP&#x2F;2 Server Push 特性">
+<meta name="twitter:description" content="前言很长一段时间内，NGINX 并不支持 HTTP/2 的 Server Push 特性。好消息是最新版本的 NGINX 1.13.9 已支持该特性，详情请移步 NGINX 官方博客。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。 又拍云在 NGINX 基础上，已经在其 CDN 网络中全网支持 HTTP/2 的 Ser">
+<meta name="twitter:image" content="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cbf9347f-24a2-4634-8a14-36ff95725dd6/normal-server-response.png">
 
 
 
@@ -151,7 +154,7 @@
 
 
 
-  <title>HTTP/2 Server Push  功能介绍 | JackWu's Blog</title>
+  <title>又拍云 CDN 服务支持 HTTP/2 Server Push 特性 | JackWu's Blog</title>
   
 
 
@@ -341,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP/2 Server Push  功能介绍</h1>
+          <h1 class="post-title" itemprop="name headline">又拍云 CDN 服务支持 HTTP/2 Server Push 特性</h1>
         
 
         <div class="post-meta">
@@ -369,8 +372,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-18T23:57:25+08:00">
-                2018-04-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-19T22:02:26+08:00">
+                2018-04-19
               </time>
             
           </span>
@@ -397,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  743
+                  1,661
                 </span>
               
 
@@ -422,43 +425,70 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="HTTP-2-文档中心文案"><a href="#HTTP-2-文档中心文案" class="headerlink" title="HTTP/2 文档中心文案"></a>HTTP/2 文档中心文案</h2><p><strong>功能说明</strong></p>
-<p>HTTP/2 即超文本传输协议 2.0，是下一代 HTTP 协议，在 CDN 控制台您可以灵活进行 HTTP/2 特性的开启和关闭。</p>
-<p>又拍云 CDN 服务当前已全平台支持 HTTP/2。HTTP/2 是在 HTTPS 协议的基础上实现的，只要使用又拍云 HTTPS 加速服务的域名，都可免费享受 HTTP/2 服务。又拍云控制台关于 HTTP/2 的配置支持三种模式的设置，分别是：</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很长一段时间内，<code>NGINX</code> 并不支持 <code>HTTP/2</code> 的 <code>Server Push</code> 特性。好消息是最新版本的 <code>NGINX 1.13.9</code> 已支持该特性，详情请移步 <a href="https://www.nginx.com/blog/nginx-1-13-9-http2-server-push/" target="_blank" rel="noopener">NGINX 官方博客</a>。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。</p>
+<p>又拍云在 <code>NGINX</code> 基础上，已经在其 CDN 网络中全网支持 <code>HTTP/2</code> 的 <code>Server Push</code> 特性，这是既又拍云 CDN 全网支持 <code>TLS 1.3</code> 之后又一重要特性。我们将不遗余力的保持新特性的更新迭代，为全网用户带来更加快速的访问体验。</p>
 <a id="more"></a> 
-<p>1)开启 HTTP/2 </p>
-<p>默认开启 HTTP/2 特性，包括采用二进制格式传输数据、对消息头采用 HPACK 进行压缩传输、多路复用 等特性，但不包括 Server Push 特性。</p>
-<p>2)关闭 HTTP/2 </p>
-<p>如需关闭 HTTP/2 特性，可以选择关闭，请根据要求合理关闭。</p>
-<p>3)开启 HTTP/2 + Server Push </p>
-<p>该模式下，支持 HTTP/2 的所有特性，其中 Server Push 特性需要根据业务需求合理配置。</p>
-<p>特别强调的是，Server Push 是 HTTP/2 规范中引入的一种新技术，也即服务端在没有被客户端明确的询问下，抢先的 “推送” 一些网站资源给客户端。该特性只要被正确的使用，可以达到很好的页面访问效果。</p>
-<p><strong>配置引导</strong></p>
-<p>登陆 <a href="https://console.upyun.com/login/" target="_blank" rel="noopener">CDN 控制台</a>，依次进入：服务管理 &gt; 功能配置 &gt; HTTPS &gt; HTTP/2 配置，点击【管理】按钮即可开始配置。如下图所示：</p>
-<p>1）开启 HTTP/2 </p>
-<p>默认已经开启，如截图所示：</p>
-<p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-open-http2.png" height="400" width="800"></p>
-<p>注意：当且仅当开启 HTTPS 加速时，HTTP/2 特性才会生效。</p>
-<p>2）关闭 HTTP/2 </p>
-<p>如需关闭 HTTP/2 特性，可以在控制台关闭，点击【关闭 HTTP/2】按钮，然后点击【确定】即可保存配置。如截图所示：</p>
-<p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-close-http2.png" height="400" width="800"></p>
-<p>3）开启 HTTP/2 + Server Push </p>
-<p>如下截图所示，点击【 开启 HTTP/2 + Server Push 】按钮，配置匹配路径以及推送资源，然后点击【确定】即可保存配置。</p>
-<p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-http2-server-push.png" height="400" width="800"></p>
-<p>其中，在配置项里面，【匹配路径】是必填项，【推送资源】是非必填项。</p>
-<p>匹配路径：也即 Server Push 特性仅针对匹配的 URI  生效，示例为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/index.html</span><br><span class="line">/admin.html</span><br></pre></td></tr></table></figure>
-<p>推送资源：表示匹配 URI 后将要推送的资源的 PATH（不包括 HOST 部分），示例为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/style/index.css</span><br><span class="line">/dyn/index.js</span><br></pre></td></tr></table></figure>
-<p>需要注意的是当源站有设置 <a href="https://www.w3.org/TR/2017/CR-preload-20171026/#server-push-http-2" target="_blank" rel="noopener">Link 首部</a>时，即使【推送资源】在 CDN 端没有进行自定义设置，也会生效，其中 Link 首部的示例为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/css/styles.css&gt;; rel=preload; as=style</span><br></pre></td></tr></table></figure>
-<p><strong>注意事项</strong></p>
+<p>本文接下来将围绕如下 3 个方面来介绍 <code>Server Push</code> 特性：</p>
 <ul>
-<li>HTTP/2 特性是在 HTTPS 协议的基础上实现，需要加速域名支持 HTTPS 访问方可支持该特性；</li>
-<li>使用 Server Push 特性，通常会在源站设置 Link 首部，例如：</li>
+<li>何为 <code>Server Push</code> </li>
+<li>如何使用 <code>Server Push</code></li>
+<li>如何验证 <code>Server Push</code> 是否生效</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/css/styles.css&gt;; rel=preload; as=style</span><br></pre></td></tr></table></figure>
-<p>如果在 CDN 端进行自定义 Server Push 配置，优先级会高于源站设置的 Link 首部。</p>
+<h3 id="何为-Server-Push"><a href="#何为-Server-Push" class="headerlink" title="何为 Server Push"></a>何为 Server Push</h3><p><code>Server Push</code> 是 <code>HTTP/2</code> 规范中引入的一种新技术，也即服务端在没有被客户端明确的询问下，抢先的 “推送” 一些网站资源给客户端（浏览器）。该特性只要被正确的使用，可以达到很好的页面访问效果。为了更方便的理解，下文将进行对比分析：</p>
+<ul>
+<li>未使用 <code>Server Push</code> 特性</li>
+</ul>
+<p><img src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cbf9347f-24a2-4634-8a14-36ff95725dd6/normal-server-response.png"></p>
+<p>图片来源：<code>www.smashingmagazine.com</code></p>
+<p>WEB 浏览器访问 WEB 服务端遵循着请求-响应模式，也即 WEB 浏览器请求一个资源，WEB 服务器响应一个资源。以常规的网页为例，当请求一个 <code>index.html</code> 后，WEB 服务端响应一个 <code>index.html</code> 页面给 WEB 浏览器，此时 WEB 浏览器会去解析该 <code>index.html</code> 页面，发现还需要去加载 JS、CSS、图片等资源，此时客户端会依次去请求这些资源。这无形当中影响了首屏渲染的时间，不利于页面快速加载和渲染。</p>
+<ul>
+<li>已使用 <code>Server Push</code> 特性</li>
+</ul>
+<p><img src="http://provide.smashingmagazine.com/server-push-response.svg" height="300" width="600"></p>
+<p>图片来源：<code>www.smashingmagazine.com</code></p>
+<p>使用服务器推送（Server Push）技术之后，当 WEB 浏览器请求 <code>index.html</code> 之后，WEB 服务端会直接将需要推送的资源一并发给 WEB 浏览器，而不需要 WEB 浏览器进行依次请求，这减少了 WEB 浏览器进行 GET 请求所消耗的时间。</p>
+<h3 id="如何使用-Server-Push"><a href="#如何使用-Server-Push" class="headerlink" title="如何使用 Server Push"></a>如何使用 <code>Server Push</code></h3><p>又拍云 CDN 支持 <code>Server Push</code> 特性可以通过如下两种方式来实现：</p>
+<p>####方式一：</p>
+<p>利用 HTTP 的 <code>Link</code> 首部，这在 W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener">Preload</a> 工作草案中有详细描述。示例为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/static/css/style.css&gt;; rel=preload; as=style;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>Link</code> 首部中 <code>as</code> 是必选的，它告诉了浏览器推送的资源类型，例如 <code>as=style</code> 表明了推送的资源是一个样式表，除了样式表，您还可以推送其他的内容类型，详情参见<a href="https://w3c.github.io/preload/#link-element-interface-extensions" target="_blank" rel="noopener">支持的内容类型</a>。如果需要进行多资源推送，可以进行如下设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/static/css/styles.css&gt;; rel=preload; as=style, &lt;/js/scripts.js&gt;; rel=preload; as=script, &lt;/img/logo.png&gt;; rel=preload; as=image</span><br></pre></td></tr></table></figure>
+<p>####方式二：</p>
+<p>在 CDN 控制台进行自定义 <code>Server Push 配置</code>，此时您无需在源站进行修改，例如：</p>
+<p>匹配路径为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.html</span><br></pre></td></tr></table></figure>
+<p>推送资源为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/static/123.css</span><br><span class="line">/static/456.js</span><br></pre></td></tr></table></figure>
+<p>在 CDN 控制台的配置如截图所示：</p>
+<p><img src="http://upyun-assets.b0.upaiyun.com/docs/cdn/config/upyun-cdn-config-http2-server-push.png" height="300" width="600"></p>
+<p>其中【匹配路径】为必填项，【推送资源】为非必填项。</p>
+<p>以上两种方式，需要注意如下事项：</p>
+<ul>
+<li><p>如果源站已经通过 <code>Link</code> 首部来实现服务器推送，在 CDN 端的配置只需要配置【匹配路径】即可，无需配置【推送资源】选项；其中通过 <code>Link</code> 首部推送资源的方式， CDN 已经默认开启；</p>
+</li>
+<li><p>如果在 CDN 端进行自定义 <code>Server Push</code> 推送资源配置，则优先级会高于源站设置的 <code>Link</code> 首部；</p>
+</li>
+<li><p>无论何种实现方式，总的（包括 <code>Link</code> 首部和 CDN 自定义的方式）推送资源数量不超过 8 个。</p>
+</li>
+</ul>
+<h3 id="如何验证-Server-Push-是否生效"><a href="#如何验证-Server-Push-是否生效" class="headerlink" title="如何验证 Server Push 是否生效"></a>如何验证 Server Push 是否生效</h3><p><strong>1）通过 <code>Google Chrome</code> 浏览器进行测试</strong></p>
+<p>在 CDN 控制台进行了如下配置：</p>
+<p><img src="https://upyun-assets.b0.upaiyun.com/docs/blog/https_server_push_test.png" height="300" width="600"></p>
+<p>通过 <code>Google Chrome</code> 开发者工具进行抓包查看，推送的资源都被 <code>Push</code> 了，如截图所示：</p>
+<p><img src="http://upyun-assets.b0.upaiyun.com/docs/blog/https_server-push_upyun_club_index_html.png
+" height="300" width="600"></p>
+<p>查看 <code>index.html</code> 资源响应头信息，查看 <code>x-upyun-h2-pushed</code> 字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">age: 501691</span><br><span class="line">cache-control: max-age=691200</span><br><span class="line">content-encoding: br</span><br><span class="line">content-type: text/html</span><br><span class="line">date: Thu, 19 Apr 2018 05:32:26 GMT</span><br><span class="line">etag: W/&quot;86ef9cae8d9f9e1205b25357e78a149b&quot;</span><br><span class="line">expires: Sat, 21 Apr 2018 10:10:55 GMT</span><br><span class="line">last-modified: Fri, 13 Apr 2018 10:10:45 GMT</span><br><span class="line">server: marco/2.1</span><br><span class="line">set-cookie: UPYUNPUSH=582825323-1696419771-1484613131-3932011035; Max-Age=7200</span><br><span class="line">status: 200</span><br><span class="line">vary: Accept-Encoding</span><br><span class="line">via: T.205.M, V.403-zj-fud-207, S.mix-sd-dst-035, T.40.M, V.mix-sd-dst-044, T.136.H, M.cun-sd-lyi1-136</span><br><span class="line">x-content-type: text/html</span><br><span class="line">x-request-id: 04dc2c7db2c509af1efc7d7252f0c2ce; 319efa6d981c0cb8dfb2b389368284f4</span><br><span class="line">x-source: U/200</span><br><span class="line">x-upyun-h2-pushed: /image/meinv1.jpg; /image/meinv2.jpg; /image/meinv3.jpg; /image/meinv4.jpg</span><br></pre></td></tr></table></figure>
+<p>其中，<code>x-upyun-h2-pushed</code> 字段内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x-upyun-h2-pushed: /image/meinv1.jpg; /image/meinv2.jpg; /image/meinv3.jpg; /image/meinv4.jpg</span><br></pre></td></tr></table></figure>
+<p>也可以说明所配置的推送资源被成功 <code>Push</code> 了。</p>
+<p><strong>2）通过 <code>nghttp</code> 工具进行测试</strong></p>
+<p>测试命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nghttp -ans https://server-push.upyun.club/index.html</span><br></pre></td></tr></table></figure>
+<p>测试结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_47_30_centos ~]# nghttp -ans https://server-push.upyun.club/index.html</span><br><span class="line">***** Statistics *****</span><br><span class="line"></span><br><span class="line">Request timing:</span><br><span class="line">  responseEnd: the  time  when  last  byte of  response  was  received</span><br><span class="line">               relative to connectEnd</span><br><span class="line"> requestStart: the time  just before  first byte  of request  was sent</span><br><span class="line">               relative  to connectEnd.   If  &apos;*&apos; is  shown, this  was</span><br><span class="line">               pushed by server.</span><br><span class="line">      process: responseEnd - requestStart</span><br><span class="line">         code: HTTP status code</span><br><span class="line">         size: number  of  bytes  received as  response  body  without</span><br><span class="line">               inflation.</span><br><span class="line">          URI: request URI</span><br><span class="line"></span><br><span class="line">see http://www.w3.org/TR/resource-timing/#processing-model</span><br><span class="line"></span><br><span class="line">sorted by &apos;complete&apos;</span><br><span class="line"></span><br><span class="line">id  responseEnd requestStart  process code size request path</span><br><span class="line"> 13    +13.30ms       +149us  13.15ms  200  141 /index.html</span><br><span class="line"> 21   +303.34ms     +13.40ms 289.93ms  200 314K /image/meinv4.jpg</span><br><span class="line"> 19   +578.33ms     +13.40ms 564.93ms  200 628K /image/meinv3.jpg</span><br><span class="line"> 17   +595.77ms     +13.40ms 582.37ms  200 717K /image/meinv2.jpg</span><br><span class="line"> 15   +603.54ms     +13.40ms 590.14ms  200 726K /image/meinv1.jpg</span><br><span class="line">  8      +1.00s *   +13.08ms 991.45ms  200 314K /image/meinv4.jpg</span><br><span class="line">  6      +1.40s *   +13.07ms    1.38s  200 628K /image/meinv3.jpg</span><br><span class="line">  2      +1.42s *   +12.96ms    1.40s  200 726K /image/meinv1.jpg</span><br><span class="line">  4      +1.45s *   +13.06ms    1.44s  200 717K /image/meinv2.jpg</span><br></pre></td></tr></table></figure>
+<p>从测试结果中可以看出，被推推送的资源在 <code>requestStart</code> 栏左侧以星号标记了出来。</p>
+<h3 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h3><p><code>Server Push</code> 作为 <code>HTTP/2</code> 最激动人心的特性，在性能提升方面是一大突破和挑战。又拍云紧紧跟随时代的步伐，寄希望为互联网用户提供更安全、更快的加速体验。与此同时，我们也很高兴成为国内首家推出 <code>Server Push</code> 功能的 CDN 厂商。我们期待您的测试和使用。更多反馈意见，请回复该博客。</p>
 
       
     </div>
@@ -700,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-2-文档中心文案"><span class="nav-number">1.</span> <span class="nav-text">HTTP/2 文档中心文案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何为-Server-Push"><span class="nav-number">2.</span> <span class="nav-text">何为 Server Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用-Server-Push"><span class="nav-number">3.</span> <span class="nav-text">如何使用 Server Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何验证-Server-Push-是否生效"><span class="nav-number">4.</span> <span class="nav-text">如何验证 Server Push 是否生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后语"><span class="nav-number">5.</span> <span class="nav-text">后语</span></a></li></ol></div>
             
 
           </div>
@@ -763,7 +793,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共821字</span>
+  <span class="post-count">博客全站共1.7k字</span>
 </div>
 
         
