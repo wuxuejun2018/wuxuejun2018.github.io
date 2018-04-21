@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[如何在 CentOS 7 下安装 Nginx]]></title>
     <url>%2F2018%2F04%2F21%2F%E5%A6%82%E4%BD%95%E5%9C%A8-CentOS-7-%E4%B8%8B%E5%AE%89%E8%A3%85-Nginx%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[准备工作在腾讯云上申请了一台云主机作为测试环境，并安装了镜像，镜像版本为： 12 很长一段时间内，Nginx 并不支持 HTTP/2 的 Server Push 特性。好消息是最新版本的 Nginx 1.13.9 已支持该特性，详情请移步 Nginx 官方博客。这个特性的目的是让服务端将部分资源主动推送给客户端（浏览器），节约了客户端需要使用这些资源再次发送 GET 请求所消耗的时间。 又拍云在 Nginx 基础上，已经在其 CDN 网络中全网支持 HTTP/2 的 Server Push 特性，这是既又拍云 CDN 全网支持 TLS 1.3 之后又一重要特性。我们将不遗余力的保持新特性的更新迭代，为全网用户带来更加快速的访问体验。]]></content>
   </entry>
   <entry>
     <title><![CDATA[又拍云 CDN 服务支持 HTTP/2 Server Push 特性]]></title>
