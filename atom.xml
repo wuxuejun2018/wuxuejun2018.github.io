@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wuxuejun2018.github.io/"/>
-  <updated>2018-04-20T15:19:50.000Z</updated>
+  <updated>2018-04-21T08:40:15.000Z</updated>
   <id>https://wuxuejun2018.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在 CentOS 7 下安装 Nginx</title>
+    <link href="https://wuxuejun2018.github.io/2018/04/21/%E5%A6%82%E4%BD%95%E5%9C%A8-CentOS-7-%E4%B8%8B%E5%AE%89%E8%A3%85-Nginx/"/>
+    <id>https://wuxuejun2018.github.io/2018/04/21/如何在-CentOS-7-下安装-Nginx/</id>
+    <published>2018-04-21T08:39:43.000Z</published>
+    <updated>2018-04-21T08:40:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>又拍云 CDN 服务支持 HTTP/2 Server Push 特性</title>
