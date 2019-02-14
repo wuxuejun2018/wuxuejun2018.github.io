@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="JackWu&#39;s Blog">
 <meta property="og:description" content="RDMA(RemoteDirect Memory Access)技术全称远程直接内存访问，就是为了解决网络传输中服务器端数据处理的延迟而产生的。它将数据直接从一台计算机的内存传输到另一台计算机，无需双方操作系统的介入。这允许高吞吐、低延迟的网络通信，尤其适合在大规模并行计算机集群中使用。RDMA通过网络把资料直接传入计算机的存储区，将数据从一个系统快速移动到远程系统存储器中，而不对操作系统造成任何">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-14T08:15:25.000Z">
+<meta property="og:updated_time" content="2019-02-14T08:27:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出全面解析 RDMA">
 <meta name="twitter:description" content="RDMA(RemoteDirect Memory Access)技术全称远程直接内存访问，就是为了解决网络传输中服务器端数据处理的延迟而产生的。它将数据直接从一台计算机的内存传输到另一台计算机，无需双方操作系统的介入。这允许高吞吐、低延迟的网络通信，尤其适合在大规模并行计算机集群中使用。RDMA通过网络把资料直接传入计算机的存储区，将数据从一个系统快速移动到远程系统存储器中，而不对操作系统造成任何">
@@ -365,7 +365,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-14T16:15:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-14T16:27:48+08:00">
                 2019-02-14
               </time>
             
@@ -420,7 +420,8 @@
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>RDMA(RemoteDirect Memory Access)技术全称远程直接内存访问，就是为了解决网络传输中服务器端数据处理的延迟而产生的。它将数据直接从一台计算机的内存传输到另一台计算机，无需双方操作系统的介入。这允许高吞吐、低延迟的网络通信，尤其适合在大规模并行计算机集群中使用。RDMA通过网络把资料直接传入计算机的存储区，将数据从一个系统快速移动到远程系统存储器中，而不对操作系统造成任何影响，这样就不需要用到多少计算机的处理能力。它消除了外部存储器复制和上下文切换的开销，因而能解放内存带宽和CPU周期用于改进应用系统性能。</p>
 <pre><code>本次详解我们从三个方面详细介绍RDMA：RDMA背景、RDMA相关工作、RDMA技术详解。
-</code></pre><p>一、背景介绍</p>
+</code></pre><a id="more"></a>
+<p>一、背景介绍</p>
 <p>1.1 传统TCP/IP通信模式</p>
 <p>传统的TCP/IP网络通信，数据需要通过用户空间发送到远程机器的用户空间。数据发送方需要讲数据从用户应用空间Buffer复制到内核空间的Socket Buffer中。然后Kernel空间中添加数据包头，进行数据封装。通过一系列多层网络协议的数据包处理工作，这些协议包括传输控制协议（TCP）、用户数据报协议（UDP）、互联网协议（IP）以及互联网控制消息协议（ICMP）等。数据才被Push到NIC网卡中的Buffer进行网络传输。消息接受方接受从远程机器发送的数据包后，要将数据包从NIC buffer中复制数据到Socket Buffer。然后经过一些列的多层网络协议进行数据包的解析工作。解析后的数据被复制到相应位置的用户应用空间Buffer。这个时候再进行系统上下文切换，用户应用程序才被调用。以上就是传统的TCP/IP协议层的工作。</p>
 <p>如今随着社会的发展，我们希望更快和更轻量级的网络通信。</p>
