@@ -101,16 +101,24 @@
 
 
 
-<meta name="description" content="人生伟业的建立，不在能知，乃在能行。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackWu&#39;s Blog">
-<meta property="og:url" content="https://wuxuejun2018.github.io/archives/2019/02/index.html">
+<meta name="description" content="前言我们在此宣布，又拍云即将在其内容分发网络中部署 TLS 1.3，作为国内首家在其内容分发网络中部署 TLS 1.3 的 CDN 厂商，又拍云始终跟随安全及速度的步伐，为互联网世界的的安全与加速贡献着自己的一份力量。在互联网世界这个生态系统中，进行 TLS 安全协议的升级并不简单，这个需要客户端和服务端同时进行升级，并确保客户端和服务端的所有通信都是正常的。又拍云在其内容分发网络中进行了这个尝试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TLS 1.3 简介以及如何开启使用？">
+<meta property="og:url" content="https://wuxuejun2018.github.io/2019/04/25/ls13/index.html">
 <meta property="og:site_name" content="JackWu&#39;s Blog">
-<meta property="og:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta property="og:description" content="前言我们在此宣布，又拍云即将在其内容分发网络中部署 TLS 1.3，作为国内首家在其内容分发网络中部署 TLS 1.3 的 CDN 厂商，又拍云始终跟随安全及速度的步伐，为互联网世界的的安全与加速贡献着自己的一份力量。在互联网世界这个生态系统中，进行 TLS 安全协议的升级并不简单，这个需要客户端和服务端同时进行升级，并确保客户端和服务端的所有通信都是正常的。又拍云在其内容分发网络中进行了这个尝试">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/12/firefix.jpg
+">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/12/chrome_tls13.jpg">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/12/tls13.png">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/12/tls13.jpg">
+<meta property="og:updated_time" content="2019-04-25T04:38:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackWu&#39;s Blog">
-<meta name="twitter:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta name="twitter:title" content="TLS 1.3 简介以及如何开启使用？">
+<meta name="twitter:description" content="前言我们在此宣布，又拍云即将在其内容分发网络中部署 TLS 1.3，作为国内首家在其内容分发网络中部署 TLS 1.3 的 CDN 厂商，又拍云始终跟随安全及速度的步伐，为互联网世界的的安全与加速贡献着自己的一份力量。在互联网世界这个生态系统中，进行 TLS 安全协议的升级并不简单，这个需要客户端和服务端同时进行升级，并确保客户端和服务端的所有通信都是正常的。又拍云在其内容分发网络中进行了这个尝试">
+<meta name="twitter:image" content="https://blog.upyun.com/wp-content/uploads/2017/12/firefix.jpg
+">
 
 
 
@@ -140,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://wuxuejun2018.github.io/archives/2019/02/"/>
+  <link rel="canonical" href="https://wuxuejun2018.github.io/2019/04/25/ls13/"/>
 
 
 
 
 
-  <title>归档 | JackWu's Blog</title>
+  <title>TLS 1.3 简介以及如何开启使用？ | JackWu's Blog</title>
   
 
 
@@ -165,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/wuxuejun2018"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,74 +313,278 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuxuejun2018.github.io/2019/04/25/ls13/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JackWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/13/测试页面/" itemprop="url">
-              
-                <span itemprop="name">测试页面</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">TLS 1.3 简介以及如何开启使用？</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-13T15:48:46+08:00"
-              content="2019-02-13" >
-          02-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T10:59:36+08:00">
+                2019-04-25
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-25T12:38:09+08:00">
+                2019-04-25
+              </time>
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,395
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我们在此宣布，又拍云即将在其内容分发网络中部署 TLS 1.3，作为国内首家在其内容分发网络中部署 TLS 1.3 的 CDN 厂商，又拍云始终跟随安全及速度的步伐，为互联网世界的的安全与加速贡献着自己的一份力量。在互联网世界这个生态系统中，进行 TLS 安全协议的升级并不简单，这个需要客户端和服务端同时进行升级，并确保客户端和服务端的所有通信都是正常的。又拍云在其内容分发网络中进行了这个尝试，接下来，我们更期望主流的浏览器厂商默认可以启用 TLS 1.3。截止目前为止，目前还没有任何主流浏览器在其稳定版中默认启用 TLS 1.3。</p>
+<a id="more"></a> 
+<h3 id="什么是-TLS-1-3-？"><a href="#什么是-TLS-1-3-？" class="headerlink" title="什么是 TLS 1.3 ？"></a>什么是 TLS 1.3 ？</h3><p>众所周知，TLS 1.3 是一个全新的 TLS  加密协议，相比 TLS 1.2 ，它既能提高各地互联网用户的访问速度，又能增强安全性。TLS 1.3 通过移除对老旧破损的密码协议的支持，来提高性能、效率和安全性，例如：</p>
+<ul>
+<li>CBC 模式密码</li>
+<li>SHA-1 散列函数</li>
+<li>各种 Diffie-Hellman 组</li>
+<li>RSA 密钥传输</li>
+<li>RC4 流密码</li>
+<li>Export ciphers</li>
+</ul>
+<p>它还通过简化 TLS 握手来提高速度，使其只需要一次往返，而不是之前版本中的两次。通过简化握手，可以减少延迟并提高性能。</p>
+<p>如何在浏览器（客户端）中开启 TLS 1.3 ？</p>
+<p>目前最新版本的 Chrome 和 Firefox  都支持 TLS 1.3，但是都需要手动开启。主要原因是 TLS 1.3 还在草案阶段。</p>
+<p>1）在 Firefox 中手动启用 TLS 1.3</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/12/firefix.jpg
+"></p>
+<p>Mozilla Firefox 用户可以通过以下方式在 Firefox 中启用 TLS 1.3 支持（ 请注意，Nightly 默认支持 TLS 1.3，而 Firefox Stable 需要专门配置以支持 TLS 1.3 ）。</p>
+<ul>
+<li>在 Firefox 地址栏中加载 about:config。如果显示警告屏幕，请确认您要小心，忽略安全提示；</li>
+<li>在搜索区域搜索 security.tls.version.max</li>
+<li>通过双击它将首选项的值更改为 4，默认为 3，如上图所示。</li>
+</ul>
+<p>2）在 Chrome 中手动启动 TLS 1.3</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/12/chrome_tls13.jpg"></p>
+<p>Google Chrome 用户可以通过以下方式在 Chrome 中启用 TLS 1.3 支持（ 注意：Chrome 62  之前的版本需要将  Maximum TLS version enabled  改为 TLS 1.3 ）</p>
+<ul>
+<li>在浏览器的地址栏中加载 chrome://flags/。这将打开 Web 浏览器的实验页面。</li>
+<li>在搜索区域搜索 TLS 或者 tls ，找到 TLS 1.3  选项，默认为 Default</li>
+<li>需要将  TLS 1.3 改为 Enabled (Draft)；</li>
+<li>重新启动 Web 浏览器。</li>
+</ul>
+<h4 id="如何在又拍云-CDN-（服务端）控制台开启-TLS-1-3-？"><a href="#如何在又拍云-CDN-（服务端）控制台开启-TLS-1-3-？" class="headerlink" title="如何在又拍云 CDN （服务端）控制台开启 TLS 1.3 ？"></a>如何在又拍云 CDN （服务端）控制台开启 TLS 1.3 ？</h4><p>在 又拍云 CDN 控制台，我们针对 TLS 1.3 开放了切换开关，TLS 1.3 默认为关闭状态，您可以手动开启，如截图所示：</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/12/tls13.png"></p>
+<p>值得声明的是， CDN  是否启用 TLS 1.3 ，这个取决于客户端浏览器是否支持，如果客户端并不支持 TLS 1.3 ，则会进行协议降级，仍会使用较低的 TLS 1.2 协议进行通信。</p>
+<h4 id="在-TLS-中，客户端和服务端如何进行版本协商？"><a href="#在-TLS-中，客户端和服务端如何进行版本协商？" class="headerlink" title="在 TLS 中，客户端和服务端如何进行版本协商？"></a>在 TLS 中，客户端和服务端如何进行版本协商？</h4><p>TLS 发展至今，经历了很多版本的迭代。从 20 世纪 90 年代后期，TLS 是从最早的安全套接层（SSL）改编而来，目前 TLS 有三个版本，分别为 TLSv1.0、TLSv1.1、TLSv1.2。目前 TLSv1.3 还在草案阶段，也是迄今为止，协议版本改造最大的一个版本。</p>
+<p>不是所有的客户端和服务端都支持相同的 TLS 协议版本，因此进行升级变得不太可能，因为这涉及到客户端和服务端的同时升级。为了达到在 TLS 通信过程中，协议版本可以达到一致，需要客户端和服务端进行协商，TLS 版本的协商相对是比较简单的，也即客户端通知服务端，其所支持的最新的 TLS 协议版本，服务端回复它们所支持的最新的协议版本。大体过程是：</p>
+<p>1）在进行 TLS 连接时，客户端会在连接开始时发送其支持的最高版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">client（TLSv1.2）–&gt; server</span><br></pre></td></tr></table></figure>
+<p>2）如果服务端可以正常理解客户端所发的 TLS 协议版本，则会回复相同的版本给客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client（TLSv1.2）–&gt; server</span><br><span class="line"></span><br><span class="line">client    &lt;– server（TLSv1.2）</span><br></pre></td></tr></table></figure>
+<p>3）如果服务端并不支持客户端所发送的通信版本，仅仅支持 TLSv1.0，则服务端回复一个 TLSv1.0 版本给客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client（TLSv1.2）–&gt; server</span><br><span class="line"></span><br><span class="line">client    &lt;– server（TLSv1.0）</span><br></pre></td></tr></table></figure>
+<p>如果此时，客户端也支持服务端回复的协议版本，则接下来客户端和服务端所有的安全通信都会使用这一版本（ 这里指 TLSv1.0 ）。如果客户端并不支持服务端所发送的协议版本，则会导致通信失败。</p>
+<h4 id="如何验证服务端是否支持了-TLS-1-3-？"><a href="#如何验证服务端是否支持了-TLS-1-3-？" class="headerlink" title="如何验证服务端是否支持了 TLS 1.3 ？"></a>如何验证服务端是否支持了 TLS 1.3 ？</h4><p>可以直接通过  Qualys SSL Labs’s SSL Server Test  工具来验证是否支持 TLS 1.3 了 ，如截图所示：</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/12/tls13.jpg"></p>
+<p>以上，可以得知，客户端以及服务端都支持 TLS 1.3 才可以使用  TLS 1.3  进行通信。如果您使用了 CDN 服务，需要 CDN 厂商的内容分发网络中部署 TLS 1.3 才可以正常启用。</p>
+
+      
     </div>
+	
+	
+	<div>
+      
+        
+      
+    </div>
+	
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/13/测试页面/" rel="next" title="测试页面">
+                <i class="fa fa-chevron-left"></i> 测试页面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/tls_record_size/" rel="prev" title="如何动态调节 TLS Record Size 来减少网络传输延迟？">
+                如何动态调节 TLS Record Size 来减少网络传输延迟？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -380,6 +592,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -402,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -495,6 +720,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-TLS-1-3-？"><span class="nav-number">2.</span> <span class="nav-text">什么是 TLS 1.3 ？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何在又拍云-CDN-（服务端）控制台开启-TLS-1-3-？"><span class="nav-number">2.1.</span> <span class="nav-text">如何在又拍云 CDN （服务端）控制台开启 TLS 1.3 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-TLS-中，客户端和服务端如何进行版本协商？"><span class="nav-number">2.2.</span> <span class="nav-text">在 TLS 中，客户端和服务端如何进行版本协商？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何验证服务端是否支持了-TLS-1-3-？"><span class="nav-number">2.3.</span> <span class="nav-text">如何验证服务端是否支持了 TLS 1.3 ？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -658,6 +899,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

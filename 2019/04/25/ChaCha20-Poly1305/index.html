@@ -101,16 +101,19 @@
 
 
 
-<meta name="description" content="人生伟业的建立，不在能知，乃在能行。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackWu&#39;s Blog">
-<meta property="og:url" content="https://wuxuejun2018.github.io/archives/2019/02/index.html">
+<meta name="description" content="前言近几年，Google、Baidu、Facebook 等互联网巨头，不谋而合地开始大力推行 HTTPS，国内外的大型互联网公司很多也都已启用全站 HTTPS，这也是未来互联网发展的趋势；从 2017 年开始，Chrome 浏览器已把采用 HTTP 协议的网站标记为不安全网站，苹果 App Store 中的所有应用也都必须使用 HTTPS 加密连接。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对称加密算法优化之 ChaCha20-Poly1305 算法支持">
+<meta property="og:url" content="https://wuxuejun2018.github.io/2019/04/25/ChaCha20-Poly1305/index.html">
 <meta property="og:site_name" content="JackWu&#39;s Blog">
-<meta property="og:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta property="og:description" content="前言近几年，Google、Baidu、Facebook 等互联网巨头，不谋而合地开始大力推行 HTTPS，国内外的大型互联网公司很多也都已启用全站 HTTPS，这也是未来互联网发展的趋势；从 2017 年开始，Chrome 浏览器已把采用 HTTP 协议的网站标记为不安全网站，苹果 App Store 中的所有应用也都必须使用 HTTPS 加密连接。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/09/ssl.png">
+<meta property="og:updated_time" content="2019-04-25T05:56:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackWu&#39;s Blog">
-<meta name="twitter:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta name="twitter:title" content="对称加密算法优化之 ChaCha20-Poly1305 算法支持">
+<meta name="twitter:description" content="前言近几年，Google、Baidu、Facebook 等互联网巨头，不谋而合地开始大力推行 HTTPS，国内外的大型互联网公司很多也都已启用全站 HTTPS，这也是未来互联网发展的趋势；从 2017 年开始，Chrome 浏览器已把采用 HTTP 协议的网站标记为不安全网站，苹果 App Store 中的所有应用也都必须使用 HTTPS 加密连接。">
+<meta name="twitter:image" content="https://blog.upyun.com/wp-content/uploads/2017/09/ssl.png">
 
 
 
@@ -140,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="https://wuxuejun2018.github.io/archives/2019/02/"/>
+  <link rel="canonical" href="https://wuxuejun2018.github.io/2019/04/25/ChaCha20-Poly1305/"/>
 
 
 
 
 
-  <title>归档 | JackWu's Blog</title>
+  <title>对称加密算法优化之 ChaCha20-Poly1305 算法支持 | JackWu's Blog</title>
   
 
 
@@ -165,7 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/wuxuejun2018"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,74 +308,293 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuxuejun2018.github.io/2019/04/25/ChaCha20-Poly1305/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JackWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/13/测试页面/" itemprop="url">
-              
-                <span itemprop="name">测试页面</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">对称加密算法优化之 ChaCha20-Poly1305 算法支持</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-13T15:48:46+08:00"
-              content="2019-02-13" >
-          02-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T11:51:55+08:00">
+                2019-04-25
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-25T13:56:46+08:00">
+                2019-04-25
+              </time>
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,018
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://blog.upyun.com/wp-content/uploads/2017/09/ssl.png"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>近几年，Google、Baidu、Facebook 等互联网巨头，不谋而合地开始大力推行 HTTPS，国内外的大型互联网公司很多也都已启用全站 HTTPS，这也是未来互联网发展的趋势；从 2017 年开始，Chrome 浏览器已把采用 HTTP 协议的网站标记为不安全网站，苹果 App Store 中的所有应用也都必须使用 HTTPS 加密连接。</p>
+<a id="more"></a> 
+<p>又拍云积极推动 HTTPS 的普及，共建安全云生态，将互联网安全提升到一个新的高度。2017年初，又拍云相继推出了免费的 Let’s Encrypt 和 TrustAsia 证书 ，并且和国际顶级 CA （包括：Symantec、GeoTrust）机构合作，提供 SSL 证书的申购、管理、部署等功能，操作流程简单方便，一键申购，与又拍云 CDN 服务完美结合，可为用户提供一站式 HTTPS 安全加速解决方案。</p>
+<p>今天，我们在此宣布，又拍云 CDN 已经支持 Google 推出的针对移动端优化的加密套件，也即 ChaCha20-Poly1305。又拍云平台上所有的 CDN 用户都可以享受到该算法带来的好处。接下来的章节将会围绕此算法来展开介绍。</p>
+<h3 id="对称加密算法-PK"><a href="#对称加密算法-PK" class="headerlink" title="对称加密算法 PK"></a>对称加密算法 PK</h3><p>在 TLS 握手的过程中，对称加密就是通过非对称加密算法得到的对称加密密钥。通俗的讲，就是加密（encryption）与解密（decryption）过程中使用相同的密钥。2000年10月2日，美国国家标准与技术研究所（NIST–American National Institute of Standards and Technology）选择了 Rijndael 算法作为新的高级加密标准（AES–Advanced Encryption Standard），常用的对称加密算法如下：</p>
+<table>
+<thead>
+<tr>
+<th>算法名</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AES-128-CBC</td>
+<td>实现简单，运行速度快</td>
+<td>无 MAC 功能</td>
+<td></td>
+</tr>
+<tr>
+<td>AES-128-GCM</td>
+<td>有 MAC 功能</td>
+<td>实现复杂，速度较 CBC 慢</td>
+<td></td>
+</tr>
+<tr>
+<td>ChaCha20-Poly1305</td>
+<td>运行速度快，适用于移动端</td>
+<td>推出时间较短</td>
+<td></td>
+</tr>
+<tr>
+<td>RC4</td>
+<td>实现简单，运行速度快</td>
+<td>已经不安全</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>AES-GCM 是目前常用的分组加密算法，但是其有一个缺点就是计算量大，导致性能和电量开销比较大。为了解决这个问题，intel 推出了名为 AES NI（Advanced Encryption Standard new instructions）的 x86 指令拓展集，从硬件上提供对 AES 的支持，具体参见<a href="https://www.intel.com/content/www/us/en/architecture-and-technology/advanced-encryption-standard-aes/data-protection-aes-general-technology.html" target="_blank" rel="noopener">文档</a></p>
+<p>所以对于支持 AES NI 指令的设备来说，使用 AES-GCM 无疑是最佳选择。针对移动端，对于不支持 AES NI 的设备来说，Google 在 2014年 推出了一种新的流式加密算法 ChaCha20-Poly1305，在 ARM 平台上，性能是 AES-GCM 的 3-4 倍。</p>
+<h3 id="ChaCha20-Poly1305-算法介绍"><a href="#ChaCha20-Poly1305-算法介绍" class="headerlink" title="ChaCha20-Poly1305 算法介绍"></a>ChaCha20-Poly1305 算法介绍</h3><p>Chacha20-Poly1305 是由 Google 专门针对移动端 CPU 优化而采用的一种新式流式加密算法，它的性能相比普通算法要提高 3 倍，在 CPU 为精简指令集的 ARM 平台上尤为显著（ARM v8前效果较明显）。其中 Chacha20 是指对称加密算法，Poly1305 是指身份认证算法。使用该算法，可减少加密解密所产生的数据量进而可以改善用户体验，减少等待时间，节省电池寿命等。由于其算法精简、安全性强、兼容性强等特点，目前 Google致力于全面将其在移动端推广。</p>
+<ul>
+<li>更好的性能体现</li>
+</ul>
+<p>从 Google 公司公布的数据来看，Chacha20-Poly1305 能够提升 30% 以上的加解密性能，可有效节省移动端耗电量。对比当前流行的加密套件 AES-GCM，在不支持 AES NI 指令的硬件设备上，该算法会引起性能问题，如大部分的智能手机、平板电脑以及可穿戴设备。总的来说，在部分移动设备上，ChaCha20-Poly1305 加密的速度是 AES 的 3 倍还多。也即在使用 ChaCha20-Poly1305 时，较旧的计算机或者移动端设备在加解密方面会花费更少的计算时间，减少加解密时间意味着更快的页面加载速度以及更少的设备电池消耗。<br>针对移动端设备，我们很容易得出这样的结论和解决方案：在具有硬件 AES 支持的 PC 电脑上，使用 AES-GCM 算法无疑是不错的选择；又拍云 CDN 平台会根据客户端支持的加密套件情况来智能选择是否提供 AES-GCM 还是 ChaCha20-Poly1305。对于最新的英特尔处理器，我们会使用标准的 AES-GCM 算法；对于没有硬件 AES 支持的设备来说，我们会优先选择  ChaCha20-Poly1305。</p>
+<ul>
+<li>更安全的组合方式</li>
+</ul>
+<p>就安全性而言，ChaCha20-Poly1305 加密套件使用了两种算法，其中 Chacha20 是指对称加密算法，Poly1305 是指身份认证算法。从 RFC 文档里面可以得知，ChaCha20 提供了 256 位的加密强度，这对于 AES-GCM 算法的 128 位的加密强度来说，已经绰绰有余。也就是说，使用 ChaCha20 作为对称加密算法来保障 HTTPS 安全性已经足够了。</p>
+<p>Poly1305 作为身份认证算法提供身份验证，可以防止攻击者在 TLS 握手过程中，将虚假信息插入到安全的数据流中，Poly1305 提供了大约 100 位的安全性，足以阻止这类攻击。在 TLS 握手过程中，身份验证相比加密并没有那么重要，因为即使攻击者可以向数据流中添加虚假消息，在密钥信息没有被破解的情况下，也不会读取到内部的数据信息。</p>
+<p>总之，ChaCha20-Poly1305 作为一个加密组合，可同时对数据提供机密性，完整性和真实性保证，避开了现有发现的所有安全漏洞和攻击，是一组极佳的加密套件组合。</p>
+<h3 id="实现方式及效果"><a href="#实现方式及效果" class="headerlink" title="实现方式及效果"></a>实现方式及效果</h3><p>为了达到「针对支持 AES-NI 的终端使用 AES-GCM 算法，否则使用 ChaCha20 算法」这样的效果，服务端需要支持等价加密算法组就可以满足此要求，服务端 ssl_ciphers 配置可以参考如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssl_ciphers [ECDHE-ECDSA-AES128-GCM-SHA256|ECDHE-ECDSA-CHACHA20-POLY1305|ECDHE-RSA-AES128-GCM-SHA256|ECDHE-RSA-CHACHA20-POLY1305]:ECDHE+AES128:RSA+AES128:ECDHE+AES256:RSA+AES256:ECDHE+3DES:RSA+3DES</span><br></pre></td></tr></table></figure>
+<p>方括号 “[]” 中的配置就是等价加密算法，通过以上配置可以看出，加密套件 ECDHE-ECDSA-AES128-GCM-SHA256、ECDHE-ECDSA-CHACHA20-POLY1305、ECDHE-RSA-AES128-GCM-SHA256、ECDHE-RSA-CHACHA20-POLY1305 具有相同的优先级。接下来，客户端就可以把优先希望访问的加密套件放到前面，服务端就可以根据等价算法组进行匹配，优先响应客户端支持的且排在前列的加密算法。举例说明如下：</p>
+<p>Mac Chrome 支持的加密套件序列如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Cipher Suites (13 suites) :</span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 (0xc02c)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcca9)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcca8)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (0xc013)</span><br><span class="line"> Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (0xc014)</span><br><span class="line"> Cipher Suite: TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009c)</span><br><span class="line"> Cipher Suite: TLS_RSA_WITH_AES_256_GCM_SHA384 (0x009d)</span><br><span class="line"> Cipher Suite: TLS_RSA_WITH_AES_128_CBC_SHA (0x002f)</span><br><span class="line"> Cipher Suite: TLS_RSA_WITH_AES_256_CBC_SHA (0x0035)</span><br><span class="line"> Cipher Suite: TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)</span><br></pre></td></tr></table></figure>
+<p>按照以上服务端的配置以及等价加密算法的原理，则服务端会优先响应如下加密算法： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)</span><br></pre></td></tr></table></figure>
+<p>iphone Chrome 支持的加密套件序列如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Cipher Suites (10 suites) </span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc14)</span><br><span class="line">Cipher Suite: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13) </span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b) </span><br><span class="line">Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f) </span><br><span class="line">Cipher Suite: TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x009e) </span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA (0xc00a) </span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA (0xc009) </span><br><span class="line">Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (0xc013) </span><br><span class="line">Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (0xc014) </span><br><span class="line">Cipher Suite: TLS_DHE_RSA_WITH_AES_128_CBC_SHA (0x0033)</span><br></pre></td></tr></table></figure>
+<p>按照以上服务端的配置以及等价加密算法的原理，则服务端会优先响应如下加密算法： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Cipher Suite: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc14)</span><br></pre></td></tr></table></figure>
+<p>通过以上举例可以看出，Chrome 会在不同的平台会发送不同顺序的加密算法序列，而服务端会根据等价加密算法组的支持，就可以实现针对支持 AES-NI 的终端使用 AES-GCM 算法，否则使用 ChaCha20 算法的目标。</p>
+
+      
     </div>
+	
+	
+	<div>
+      
+        
+      
+    </div>
+	
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/brotli/" rel="next" title="又拍云 CDN 支持了 Brotli 了！">
+                <i class="fa fa-chevron-left"></i> 又拍云 CDN 支持了 Brotli 了！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -380,6 +602,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -402,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -495,6 +730,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密算法-PK"><span class="nav-number">2.</span> <span class="nav-text">对称加密算法 PK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChaCha20-Poly1305-算法介绍"><span class="nav-number">3.</span> <span class="nav-text">ChaCha20-Poly1305 算法介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式及效果"><span class="nav-number">4.</span> <span class="nav-text">实现方式及效果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -658,6 +909,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

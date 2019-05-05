@@ -101,16 +101,23 @@
 
 
 
-<meta name="description" content="人生伟业的建立，不在能知，乃在能行。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackWu&#39;s Blog">
-<meta property="og:url" content="https://wuxuejun2018.github.io/archives/2019/02/index.html">
+<meta name="description" content="前言在前面的章节里面，我们介绍了如何通过优化 HTTPS 来降低网络延迟，这些技术包括：  分布式 Session 复用 OCSP Stapling HSTS HTTP/2 False Start ChaCha20-Poly1305 算法  经过调研，我们发现 TLS Record Size 大小会对互联网资源内容加载时间产生很大影响；事实上，在比较槽糕的网络环境下，它可以延迟接收数据的处理时长达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何动态调节 TLS Record Size 来减少网络传输延迟？">
+<meta property="og:url" content="https://wuxuejun2018.github.io/2019/04/25/tls_record_size/index.html">
 <meta property="og:site_name" content="JackWu&#39;s Blog">
-<meta property="og:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta property="og:description" content="前言在前面的章节里面，我们介绍了如何通过优化 HTTPS 来降低网络延迟，这些技术包括：  分布式 Session 复用 OCSP Stapling HSTS HTTP/2 False Start ChaCha20-Poly1305 算法  经过调研，我们发现 TLS Record Size 大小会对互联网资源内容加载时间产生很大影响；事实上，在比较槽糕的网络环境下，它可以延迟接收数据的处理时长达">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tcp_tls.png">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record_size.jpg">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record1.png">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record2.png">
+<meta property="og:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record3.png">
+<meta property="og:updated_time" content="2019-04-25T04:39:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackWu&#39;s Blog">
-<meta name="twitter:description" content="人生伟业的建立，不在能知，乃在能行。">
+<meta name="twitter:title" content="如何动态调节 TLS Record Size 来减少网络传输延迟？">
+<meta name="twitter:description" content="前言在前面的章节里面，我们介绍了如何通过优化 HTTPS 来降低网络延迟，这些技术包括：  分布式 Session 复用 OCSP Stapling HSTS HTTP/2 False Start ChaCha20-Poly1305 算法  经过调研，我们发现 TLS Record Size 大小会对互联网资源内容加载时间产生很大影响；事实上，在比较槽糕的网络环境下，它可以延迟接收数据的处理时长达">
+<meta name="twitter:image" content="https://blog.upyun.com/wp-content/uploads/2017/11/tcp_tls.png">
 
 
 
@@ -140,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://wuxuejun2018.github.io/archives/2019/02/"/>
+  <link rel="canonical" href="https://wuxuejun2018.github.io/2019/04/25/tls_record_size/"/>
 
 
 
 
 
-  <title>归档 | JackWu's Blog</title>
+  <title>如何动态调节 TLS Record Size 来减少网络传输延迟？ | JackWu's Blog</title>
   
 
 
@@ -165,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/wuxuejun2018"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,74 +312,273 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wuxuejun2018.github.io/2019/04/25/tls_record_size/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JackWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/13/测试页面/" itemprop="url">
-              
-                <span itemprop="name">测试页面</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">如何动态调节 TLS Record Size 来减少网络传输延迟？</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-13T15:48:46+08:00"
-              content="2019-02-13" >
-          02-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T11:29:32+08:00">
+                2019-04-25
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-25T12:39:04+08:00">
+                2019-04-25
+              </time>
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,122
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在前面的章节里面，我们介绍了如何通过优化 HTTPS 来降低网络延迟，这些技术包括：</p>
+<ul>
+<li>分布式 Session 复用</li>
+<li>OCSP Stapling</li>
+<li>HSTS</li>
+<li>HTTP/2</li>
+<li>False Start</li>
+<li>ChaCha20-Poly1305 算法</li>
+</ul>
+<p>经过调研，我们发现 TLS Record Size 大小会对互联网资源内容加载时间产生很大影响；事实上，在比较槽糕的网络环境下，它可以延迟接收数据的处理时长达几次往返；甚至在移动网络上，这可能会导致数百毫秒的不必要的延迟。今天我们将会从 TCP 协议层面来介绍如何通过动态调节 TLS Record Size 来减少网络传输延迟。</p>
+<a id="more"></a> 
+<h3 id="TLS-和-TCP"><a href="#TLS-和-TCP" class="headerlink" title="TLS 和 TCP"></a>TLS 和 TCP</h3><p>TLS 协议由记录层（TLS Record Layer）和握手层(TLS Handshake Layer)组成，记录层处于协议的最底层，为 TLS 协议提供安全可靠的连接，为高层协议提供数据封装、压缩、加密等基本功能的支持。握手层协议处于记录层协议之上，握手层协议的作用是在真正的应用数据传输之前，使客户端和服务器互相进行身份认证，协商加密算法以及生成加密密钥。其中：</p>
+<ul>
+<li>最大的 TLS  Record 的大小为 16KB；</li>
+<li>每个 TLS Record 包含一个 5Byte 的头部；</li>
+</ul>
+<p>TCP(Transmission Control Protocol 传输控制协议)是一种面向连接(连接导向)的、可靠的、 基于 IP 的传输层协议。</p>
+<p>我们知道，TLS 是建立在可靠的数据传输的基础之上，运行在 TCP 层之上，一个 TLS Record Size 由多个 TCP 包组成，通过 WireShark  抓包可以得知：一个 TLS Record 大小为 16408 Byte ，被分为了 12 TCP 包。</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/11/tcp_tls.png"></p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>我们知道，Nginx 默认的 ssl_buffer_size 大小为 16KB（不支持动态调整），也即一个 TLS Record Size 的大小，举个例子：<br>假如资源文件的大小为 1600KB，那么就会被拆分为 100 个 TLS Record 传送到客户端。此时会出现这样的问题：</p>
+<p>1）TLS Record Size 越大，被拆分的 TCP 包会过多，在传输过程中，如果 TCP 出现丢包情况，那么 TLS Record 到达客户端的时间就会变长，客户端必须等到收到完整的 TLS Record 才能够进行解密，如下图所示：20KB 的资源文件，被分成了大小不同的 record 。TLS Record 及 TCP 包的关系如下图所示：</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record_size.jpg"></p>
+<p>2）如果 TLS Record Size 较小，则 TCP 丢包对 TLS Record 的影响就较小了，但是于此同时，TLS Record 头部就变多了，可能还会降低连接的吞吐量。</p>
+<p>所以，小的 Record Size 会产生额外的消耗；大的 Record Size 会导致延迟；所以可以根据 TCP 窗口大小来合理调整 TLS Record 大小是明智之举。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>根据以上的的论点，我们可以得出这样的结论：在 TCP 慢启动的过程中，我们可以将 TLS Record Size 调整小点；因为这个过程中 TCP 链接的拥塞窗口（cwnd ）较小，TCP 链接的吞吐量也较小；在 TCP 连接结束慢启动之后，TLS Record 的大小可以增大一些，随着时间的推移，最终将 TLS Record 的大小调整到最大（也即 16KB）。</p>
+<p>大致的算法规则为：</p>
+<p>1）在新连接以及 TCP 慢启动阶段，将 TLS Record 大小调整为大约 1 个 TCP 包的大小；</p>
+<p>2）在一定的阶段，也即发送一定数量的 Record Size 之后，采用较大的 Record Size ；</p>
+<p>3）随着时间的推移，采用最大的 Record Size 大小，也即 16KB。</p>
+<p>为了验证这个过程，通过 WireShark 抓包进行了测试：</p>
+<p>阶段一：在刚开始，TLS Record Size 为 1393 Byte </p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record1.png"></p>
+<p>阶段二：一段时间之后，TLS Record Size 为 4253 Byte</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record2.png"></p>
+<p>阶段三：最后，TLS Record Size 动态变为 16408 Byte</p>
+<p><img src="https://blog.upyun.com/wp-content/uploads/2017/11/tls_record3.png"></p>
+<p>通过抓包显示，也验证了上面的算法规则；</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>动态 TLS Record Size 调整是我们 HTTPS 优化过程中的一项关键技术，并且该特性我们针对平台所有的 HTTPS 加速服务都默认开启了。我们还会不断优化和升级 HTTPS 加速，致力于提供更快更安全的 HTTPS 加速解决方案，欢迎您的试用。</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.igvita.com/2013/12/16/optimizing-nginx-tls-time-to-first-byte/" target="_blank" rel="noopener">https://www.igvita.com/2013/12/16/optimizing-nginx-tls-time-to-first-byte/</a></p>
+<p><a href="https://hpbn.co/building-blocks-of-tcp/" target="_blank" rel="noopener">https://hpbn.co/building-blocks-of-tcp/</a></p>
+<p><a href="https://hpbn.co/transport-layer-security-tls/" target="_blank" rel="noopener">https://hpbn.co/transport-layer-security-tls/</a></p>
+<p><a href="https://www.igvita.com/2013/10/24/optimizing-tls-record-size-and-buffering-latency/" target="_blank" rel="noopener">https://www.igvita.com/2013/10/24/optimizing-tls-record-size-and-buffering-latency/</a></p>
+
+      
     </div>
+	
+	
+	<div>
+      
+        
+      
+    </div>
+	
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/ls13/" rel="next" title="TLS 1.3 简介以及如何开启使用？">
+                <i class="fa fa-chevron-left"></i> TLS 1.3 简介以及如何开启使用？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/brotli/" rel="prev" title="又拍云 CDN 支持了 Brotli 了！">
+                又拍云 CDN 支持了 Brotli 了！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -380,6 +586,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -402,8 +612,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -495,6 +714,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TLS-和-TCP"><span class="nav-number">2.</span> <span class="nav-text">TLS 和 TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到的问题"><span class="nav-number">3.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">4.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -658,6 +893,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
